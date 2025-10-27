@@ -265,7 +265,11 @@ function generateVotingList(councilType) {
 
     let html = '';
     countries.forEach(country => {
-        const currentVote = currentVotes[country.id] || '';
+        const currentVote = currentVotes[country.id];
+        const isDisabled = currentVote ? 'disabled' : '';
+        const isSelectedInFavour = currentVote === VOTE_OPTIONS.IN_FAVOUR ? 'selected' : '';
+        const isSelectedAgainst = currentVote === VOTE_OPTIONS.AGAINST ? 'selected' : '';
+        const isSelectedAbstention = currentVote === VOTE_OPTIONS.ABSTENTION ? 'selected' : '';
         
         html += `
             <div class="country-vote-item" data-country-id="${country.id}">
@@ -274,19 +278,22 @@ function generateVotingList(councilType) {
                     ${country.name_ar}
                 </div>
                 <div class="vote-options">
-                    <button class="vote-btn in-favour ${currentVote === VOTE_OPTIONS.IN_FAVOUR ? 'selected' : ''}" 
+                    <button class="vote-btn in-favour ${isSelectedInFavour}" 
                             data-vote-type="${VOTE_OPTIONS.IN_FAVOUR}" 
-                            onclick="recordVote('${councilType}', '${country.id}', '${VOTE_OPTIONS.IN_FAVOUR}', this)">
+                            onclick="recordVote('${councilType}', '${country.id}', '${VOTE_OPTIONS.IN_FAVOUR}', this)"
+                            ${isDisabled}>
                         <i class="fa-solid fa-plus"></i> مؤيد
                     </button>
-                    <button class="vote-btn against ${currentVote === VOTE_OPTIONS.AGAINST ? 'selected' : ''}" 
+                    <button class="vote-btn against ${isSelectedAgainst}" 
                             data-vote-type="${VOTE_OPTIONS.AGAINST}" 
-                            onclick="recordVote('${councilType}', '${country.id}', '${VOTE_OPTIONS.AGAINST}', this)">
+                            onclick="recordVote('${councilType}', '${country.id}', '${VOTE_OPTIONS.AGAINST}', this)"
+                            ${isDisabled}>
                         <i class="fa-solid fa-minus"></i> معارض
                     </button>
-                    <button class="vote-btn abstention ${currentVote === VOTE_OPTIONS.ABSTENTION ? 'selected' : ''}" 
+                    <button class="vote-btn abstention ${isSelectedAbstention}" 
                             data-vote-type="${VOTE_OPTIONS.ABSTENTION}" 
-                            onclick="recordVote('${councilType}', '${country.id}', '${VOTE_OPTIONS.ABSTENTION}', this)">
+                            onclick="recordVote('${councilType}', '${country.id}', '${VOTE_OPTIONS.ABSTENTION}', this)"
+                            ${isDisabled}>
                         <i class="fa-solid fa-xmark"></i> ممتنع
                     </button>
                 </div>
@@ -294,29 +301,26 @@ function generateVotingList(councilType) {
         `;
     });
     container.innerHTML = html;
-    // Show initial results on load
-    showVotingResult(councilType);
 }
 
 function recordVote(councilType, countryId, voteType, buttonElement) {
     const currentVotes = getCountryVotes(councilType);
     
-    // Check if already selected, if so, unselect (toggle)
-    if (currentVotes[countryId] === voteType) {
-        delete currentVotes[countryId];
-        buttonElement.classList.remove('selected');
-    } else {
-        // Remove 'selected' from all buttons for this country
-        const voteOptions = buttonElement.closest('.vote-options').querySelectorAll('.vote-btn');
-        voteOptions.forEach(btn => btn.classList.remove('selected'));
-        
-        // Select the current button
-        buttonElement.classList.add('selected');
-        currentVotes[countryId] = voteType;
-    }
+    // Record the new vote
+    currentVotes[countryId] = voteType;
     
+    // Update local storage
     saveCountryVotes(councilType, currentVotes);
-    showVotingResult(councilType);
+    
+    // Update the UI for the current country: select the button and disable all buttons
+    const countryItem = buttonElement.closest('.country-vote-item');
+    const allButtons = countryItem.querySelectorAll('.vote-btn');
+    allButtons.forEach(btn => {
+        btn.classList.remove('selected');
+        btn.disabled = true; // Disable all buttons for this country after a vote
+    });
+    
+    buttonElement.classList.add('selected');
 }
 
 function resetVoting(councilType) {
@@ -332,10 +336,19 @@ function resetVoting(councilType) {
 }
 
 function showVotingResult(councilType) {
+    // This function now only handles navigation to the results page
+    if (councilType === 'human_rights') {
+        window.location.href = 'human_rights_voting_results.html';
+    } else if (councilType === 'security') {
+        window.location.href = 'security_council_voting_results.html';
+    }
+}
+
+function displayVotingResults(councilType) {
     const countries = getCountryList(councilType);
     const currentVotes = getCountryVotes(councilType);
-    const resultsContainer = document.getElementById(`${councilType}_results`);
-    const summaryContainer = document.getElementById(`${councilType}_summary`);
+    const resultsContainer = document.getElementById(`${councilType}_results_grid`);
+    const summaryContainer = document.getElementById(`${councilType}_summary_large`);
     
     if (!resultsContainer || !summaryContainer) return;
 
@@ -346,26 +359,34 @@ function showVotingResult(councilType) {
         [VOTE_OPTIONS.ABSTENTION]: 0
     };
     
-    // Generate result list (plain text, no boxes, all on one page)
+    // Generate result list for the grid layout
     countries.forEach(country => {
-        const vote = currentVotes[country.id] || 'لم يصوت';
-        let iconMarkup = '';
-        
+        const vote = currentVotes[country.id];
+        let voteClass = 'no-vote';
+        let voteIcon = '';
+        let voteText = 'لم يصوت';
+
         if (vote === VOTE_OPTIONS.IN_FAVOUR) {
-            iconMarkup = '<i class="fa-solid fa-plus"></i>';
+            voteClass = 'in-favour';
+            voteIcon = '<i class="fa-solid fa-plus"></i>';
+            voteText = 'مؤيد';
             voteCounts[VOTE_OPTIONS.IN_FAVOUR]++;
         } else if (vote === VOTE_OPTIONS.AGAINST) {
-            iconMarkup = '<i class="fa-solid fa-minus"></i>';
+            voteClass = 'against';
+            voteIcon = '<i class="fa-solid fa-minus"></i>';
+            voteText = 'معارض';
             voteCounts[VOTE_OPTIONS.AGAINST]++;
         } else if (vote === VOTE_OPTIONS.ABSTENTION) {
-            iconMarkup = '<i class="fa-solid fa-xmark"></i>';
+            voteClass = 'abstention';
+            voteIcon = '<i class="fa-solid fa-xmark"></i>';
+            voteText = 'ممتنع';
             voteCounts[VOTE_OPTIONS.ABSTENTION]++;
         }
 
         resultsHTML += `
-            <div class="voting-result-item">
-                <div class="country-name-result">${country.name_ar}</div>
-                <div class="vote-status">${iconMarkup} ${vote}</div>
+            <div class="result-grid-item ${voteClass}">
+                <div class="result-country-name">${country.name_ar}</div>
+                <div class="result-vote-status">${voteIcon}</div>
             </div>
         `;
     });
@@ -374,17 +395,20 @@ function showVotingResult(councilType) {
 
     // Generate summary
     summaryContainer.innerHTML = `
-        <div class="summary-item in-favour">
+        <div class="summary-item-large in-favour">
             <i class="fa-solid fa-plus"></i>
-            <span>مؤيد: ${voteCounts[VOTE_OPTIONS.IN_FAVOUR]}</span>
+            <span>مؤيد:</span>
+            <span class="count">${voteCounts[VOTE_OPTIONS.IN_FAVOUR]}</span>
         </div>
-        <div class="summary-item against">
+        <div class="summary-item-large against">
             <i class="fa-solid fa-minus"></i>
-            <span>معارض: ${voteCounts[VOTE_OPTIONS.AGAINST]}</span>
+            <span>معارض:</span>
+            <span class="count">${voteCounts[VOTE_OPTIONS.AGAINST]}</span>
         </div>
-        <div class="summary-item abstention">
+        <div class="summary-item-large abstention">
             <i class="fa-solid fa-xmark"></i>
-            <span>ممتنع: ${voteCounts[VOTE_OPTIONS.ABSTENTION]}</span>
+            <span>ممتنع:</span>
+            <span class="count">${voteCounts[VOTE_OPTIONS.ABSTENTION]}</span>
         </div>
     `;
 }
@@ -402,6 +426,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     } else if (window.location.pathname.includes('speaker_list')) {
         loadSpeakerList();
+    } else if (window.location.pathname.includes('_voting_results.html')) {
+        // Results page initialization is handled by inline script in the HTML
     }
     
     setupEventListeners();
@@ -417,6 +443,14 @@ function goToSpeakerList(councilType) {
         window.location.href = 'speaker_list_human_rights.html';
     } else if (councilType === 'security') {
         window.location.href = 'speaker_list_security_council.html';
+    }
+}
+
+function goBackToCouncil(councilType) {
+    if (councilType === 'human_rights') {
+        window.location.href = 'human_rights_council.html';
+    } else if (councilType === 'security') {
+        window.location.href = 'security_council.html';
     }
 }
 
