@@ -428,3 +428,180 @@ header p {
     animation: pulse 1.5s ease-in-out infinite;
 }
 
+
+
+/* --- Voting System Styles --- */
+.voting-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.voting-list {
+    flex: 1 1 55%; /* Takes up more space for the input list */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.voting-result {
+    flex: 1 1 40%; /* Takes up less space for the result */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Ensure no scrolling for the result section */
+    overflow: hidden;
+}
+
+.voting-list h2, .voting-result h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Country Voting Item */
+.country-vote-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.country-vote-item:last-child {
+    border-bottom: none;
+}
+
+.country-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Voting Buttons */
+.vote-options {
+    display: flex;
+    gap: 5px;
+}
+
+.vote-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 100px;
+    justify-content: center;
+}
+
+.vote-btn:hover {
+    opacity: 0.85;
+}
+
+.vote-btn.selected {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+/* In Favour (مؤيد) - Green */
+.vote-btn.in-favour {
+    background-color: #4CAF50; /* Green */
+}
+
+/* Against (معارض) - Red */
+.vote-btn.against {
+    background-color: #F44336; /* Red */
+}
+
+/* Abstention (ممتنع عن التصويت) - Yellow/Orange */
+.vote-btn.abstention {
+    background-color: #FFC107; /* Amber/Yellow */
+    color: #000; /* Black text for contrast */
+}
+
+/* Voting Result Display */
+#human_rights_results, #security_results {
+    /* Ensure all countries are visible without scrolling */
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh; /* Adjust based on screen size, but aim to fit */
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 10px 20px;
+    margin-bottom: 20px;
+}
+
+.voting-result-item {
+    display: flex;
+    justify-content: space-between;
+    width: 250px; /* Fixed width for multi-column layout */
+    font-size: 1rem;
+    padding: 2px 0;
+}
+
+.country-name-result {
+    font-weight: 500;
+}
+
+.vote-status {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Voting Summary */
+.voting-summary {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    margin-top: auto; /* Push to the bottom */
+}
+
+.summary-item {
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.summary-item.in-favour { color: #4CAF50; }
+.summary-item.against { color: #F44336; }
+.summary-item.abstention { color: #FFC107; }
+
+/* Font Awesome Icon Overrides for Voting */
+.vote-btn .fa-solid {
+    font-size: 1rem;
+}
+
+/* Specific icon styles to match request: Plus, Minus, X */
+.in-favour .fa-plus {
+    color: white;
+}
+
+.against .fa-minus {
+    color: white;
+}
+
+.abstention .fa-xmark {
+    color: black;
+}
+

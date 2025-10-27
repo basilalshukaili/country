@@ -1,66 +1,119 @@
 // Global variables and constants
 const STORAGE_KEYS = {
-    HUMAN_RIGHTS: 'humanRightsSelected',
-    SECURITY: 'securitySelected'
+    HUMAN_RIGHTS_SPEAKER: 'humanRightsSelected',
+    SECURITY_SPEAKER: 'securitySelected',
+    HUMAN_RIGHTS_VOTE: 'humanRightsVotes',
+    SECURITY_VOTE: 'securityVotes'
 };
 
-// Debug function
+const VOTE_OPTIONS = {
+    IN_FAVOUR: 'مؤيد',
+    AGAINST: 'معارض',
+    ABSTENTION: 'ممتنع عن التصويت'
+};
+
+// --- Country Data (Extracted and Re-formatted for Voting) ---
+const HR_COUNTRIES = [
+    { id: 'hr_albania', name_ar: 'ألبانيا', flag: 'al' },
+    { id: 'hr_germany', name_ar: 'ألمانيا', flag: 'de' },
+    { id: 'hr_argentina', name_ar: 'الأرجنتين', flag: 'ar' },
+    { id: 'hr_spain', name_ar: 'إسبانيا', flag: 'es' },
+    { id: 'hr_indonesia', name_ar: 'إندونيسيا', flag: 'id' },
+    { id: 'hr_iceland', name_ar: 'أيسلندا', flag: 'is' },
+    { id: 'hr_brazil', name_ar: 'البرازيل', flag: 'br' },
+    { id: 'hr_bulgaria', name_ar: 'بلغاريا', flag: 'bg' },
+    { id: 'hr_belgium', name_ar: 'بلجيكا', flag: 'be' },
+    { id: 'hr_panama', name_ar: 'بنما', flag: 'pa' },
+    { id: 'hr_bangladesh', name_ar: 'بنغلاديش', flag: 'bd' },
+    { id: 'hr_bolivia', name_ar: 'بوليفيا', flag: 'bo' },
+    { id: 'hr_burundi', name_ar: 'بوروندي', flag: 'bi' },
+    { id: 'hr_thailand', name_ar: 'تايلاند', flag: 'th' },
+    { id: 'hr_czech', name_ar: 'التشيك', flag: 'cz' },
+    { id: 'hr_chile', name_ar: 'تشيلي', flag: 'cl' },
+    { id: 'hr_dominican_republic', name_ar: 'جمهورية الدومينيكان', flag: 'do' },
+    { id: 'hr_georgia', name_ar: 'جورجيا', flag: 'ge' },
+    { id: 'hr_marshall_islands', name_ar: 'جزر مارشال', flag: 'mh' },
+    { id: 'hr_algeria', name_ar: 'الجزائر', flag: 'dz' },
+    { id: 'hr_south_korea', name_ar: 'كوريا الجنوبية', flag: 'kr' },
+    { id: 'hr_cote_divoire', name_ar: 'كوت ديفوار', flag: 'ci' },
+    { id: 'hr_colombia', name_ar: 'كولومبيا', flag: 'co' },
+    { id: 'hr_kuwait', name_ar: 'الكويت', flag: 'kw' },
+    { id: 'hr_congo_dr', name_ar: 'الكونغو الديمقراطية', flag: 'cd' },
+    { id: 'hr_kenya', name_ar: 'كينيا', flag: 'ke' },
+    { id: 'hr_netherlands', name_ar: 'هولندا', flag: 'nl' },
+    { id: 'hr_india', name_ar: 'الهند', flag: 'in' },
+    { id: 'hr_japan', name_ar: 'اليابان', flag: 'jp' },
+    { id: 'hr_greece', name_ar: 'اليونان', flag: 'gr' },
+    { id: 'hr_mexico', name_ar: 'المكسيك', flag: 'mx' },
+    { id: 'hr_malawi', name_ar: 'مالاوي', flag: 'mw' },
+    { id: 'hr_morocco', name_ar: 'المغرب', flag: 'ma' },
+    { id: 'hr_north_macedonia', name_ar: 'مقدونيا الشمالية', flag: 'mk' },
+    { id: 'hr_austria', name_ar: 'النمسا', flag: 'at' },
+    { id: 'hr_pakistan', name_ar: 'باكستان', flag: 'pk' },
+    { id: 'hr_portugal', name_ar: 'البرتغال', flag: 'pt' },
+    { id: 'hr_qatar', name_ar: 'قطر', flag: 'qa' },
+    { id: 'hr_romania', name_ar: 'رومانيا', flag: 'ro' },
+    { id: 'hr_switzerland', name_ar: 'سويسرا', flag: 'ch' },
+    { id: 'hr_china', name_ar: 'الصين', flag: 'cn' },
+    { id: 'hr_gambia', name_ar: 'غامبيا', flag: 'gm' },
+    { id: 'hr_france', name_ar: 'فرنسا', flag: 'fr' },
+    { id: 'hr_cyprus', name_ar: 'قبرص', flag: 'cy' },
+    { id: 'hr_kyrgyzstan', name_ar: 'قيرغيزستان', flag: 'kg' },
+    { id: 'hr_kazakhstan', name_ar: 'كازاخستان', flag: 'kz' },
+    { id: 'hr_costa_rica', name_ar: 'كوستاريكا', flag: 'cr' }
+];
+
+const SC_COUNTRIES = [
+    { id: 'sc_algeria', name_ar: 'الجزائر', flag: 'dz' },
+    { id: 'sc_denmark', name_ar: 'الدنمارك', flag: 'dk' },
+    { id: 'sc_russia', name_ar: 'روسيا', flag: 'ru' },
+    { id: 'sc_slovenia', name_ar: 'سلوفينيا', flag: 'si' },
+    { id: 'sc_sierra_leone', name_ar: 'سيراليون', flag: 'sl' },
+    { id: 'sc_china', name_ar: 'الصين', flag: 'cn' },
+    { id: 'sc_somalia', name_ar: 'الصومال', flag: 'so' },
+    { id: 'sc_france', name_ar: 'فرنسا', flag: 'fr' },
+    { id: 'sc_guyana', name_ar: 'غيانا', flag: 'gy' },
+    { id: 'sc_qatar', name_ar: 'قطر', flag: 'qa' },
+    { id: 'sc_south_korea', name_ar: 'كوريا الجنوبية', flag: 'kr' },
+    { id: 'sc_uk', name_ar: 'المملكة المتحدة', flag: 'gb' },
+    { id: 'sc_usa', name_ar: 'الولايات المتحدة', flag: 'us' },
+    { id: 'sc_greece', name_ar: 'اليونان', flag: 'gr' },
+    { id: 'sc_pakistan', name_ar: 'باكستان', flag: 'pk' }
+];
+
+// --- Utility Functions ---
 function debugLog(message, data = null) {
     console.log(`[DEBUG] ${message}`, data || '');
 }
 
-// Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
-    debugLog('DOM Content Loaded');
-    initializeCheckboxes();
-    setupEventListeners();
-});
-
-// Navigation functions
-function navigateToCouncil(councilType) {
-    debugLog('Navigating to council:', councilType);
-    if (councilType === 'human_rights') {
-        window.location.href = 'human_rights_council.html';
-    } else if (councilType === 'security') {
-        window.location.href = 'security_council.html';
+function getCouncilTypeFromURL() {
+    const currentPage = window.location.pathname.toLowerCase();
+    if (currentPage.includes('human_rights')) {
+        return 'human_rights';
+    } else if (currentPage.includes('security')) {
+        return 'security';
     }
+    return null;
 }
 
-function goToSpeakerList(councilType) {
-    debugLog('Going to speaker list:', councilType);
-    if (councilType === 'human_rights') {
-        window.location.href = 'speaker_list_human_rights.html';
-    } else if (councilType === 'security') {
-        window.location.href = 'speaker_list_security_council.html';
+function getCountryList(councilType) {
+    return councilType === 'human_rights' ? HR_COUNTRIES : SC_COUNTRIES;
+}
+
+// --- Local Storage Functions ---
+function getStorageKey(councilType, isVoting = false) {
+    if (isVoting) {
+        return councilType === 'human_rights' ? STORAGE_KEYS.HUMAN_RIGHTS_VOTE : STORAGE_KEYS.SECURITY_VOTE;
+    } else {
+        return councilType === 'human_rights' ? STORAGE_KEYS.HUMAN_RIGHTS_SPEAKER : STORAGE_KEYS.SECURITY_SPEAKER;
     }
-}
-
-function goBack() {
-    debugLog('Going back to home');
-    window.location.href = 'index.html';
-}
-
-function goBackToCouncil(councilType) {
-    debugLog('Going back to council:', councilType);
-    if (councilType === 'human_rights') {
-        window.location.href = 'human_rights_council.html';
-    } else if (councilType === 'security') {
-        window.location.href = 'security_council.html';
-    }
-}
-
-// Local storage functions
-function getStorageKey(councilType) {
-    return councilType === 'human_rights' ? STORAGE_KEYS.HUMAN_RIGHTS : STORAGE_KEYS.SECURITY;
 }
 
 function getSelectedCountries(councilType) {
     try {
-        const key = getStorageKey(councilType);
+        const key = getStorageKey(councilType, false);
         const stored = localStorage.getItem(key);
-        const result = stored ? JSON.parse(stored) : [];
-        debugLog(`Retrieved ${result.length} countries for ${councilType}`, result);
-        return result;
+        return stored ? JSON.parse(stored) : [];
     } catch (error) {
         debugLog('Error getting selected countries:', error);
         return [];
@@ -69,23 +122,39 @@ function getSelectedCountries(councilType) {
 
 function saveSelectedCountries(councilType, countries) {
     try {
-        const key = getStorageKey(councilType);
+        const key = getStorageKey(councilType, false);
         localStorage.setItem(key, JSON.stringify(countries));
-        debugLog(`Saved ${countries.length} countries for ${councilType}`, countries);
     } catch (error) {
         debugLog('Error saving selected countries:', error);
     }
 }
 
+function getCountryVotes(councilType) {
+    try {
+        const key = getStorageKey(councilType, true);
+        const stored = localStorage.getItem(key);
+        return stored ? JSON.parse(stored) : {};
+    } catch (error) {
+        debugLog('Error getting country votes:', error);
+        return {};
+    }
+}
+
+function saveCountryVotes(councilType, votes) {
+    try {
+        const key = getStorageKey(councilType, true);
+        localStorage.setItem(key, JSON.stringify(votes));
+    } catch (error) {
+        debugLog('Error saving country votes:', error);
+    }
+}
+
+// --- Speaker List Functions (Modified) ---
 function addCountryToSelection(councilType, countryData) {
-    debugLog('Adding country to selection:', countryData);
     const selected = getSelectedCountries(councilType);
-    
-    // Check if country is already selected
-    const existingIndex = selected.findIndex(country => country.value === countryData.value);
+    const existingIndex = selected.findIndex(country => country.id === countryData.id);
     
     if (existingIndex === -1) {
-        // Add country with timestamp for ordering
         const countryWithOrder = {
             ...countryData,
             timestamp: Date.now(),
@@ -93,224 +162,270 @@ function addCountryToSelection(councilType, countryData) {
         };
         selected.push(countryWithOrder);
         saveSelectedCountries(councilType, selected);
-        debugLog('Country added successfully');
-    } else {
-        debugLog('Country already exists in selection');
     }
 }
 
-function removeCountryFromSelection(councilType, countryValue) {
-    debugLog('Removing country from selection:', countryValue);
+function removeCountryFromSelection(councilType, countryId) {
     const selected = getSelectedCountries(councilType);
-    const filtered = selected.filter(country => country.value !== countryValue);
+    const filtered = selected.filter(country => country.id !== countryId);
     
-    // Reorder the remaining countries
     const reordered = filtered.map((country, index) => ({
         ...country,
         order: index + 1
     }));
     
     saveSelectedCountries(councilType, reordered);
-    debugLog('Country removed successfully');
 }
 
 function resetAllCheckboxes(councilType) {
-    debugLog('Resetting all checkboxes for:', councilType);
-    // Clear from localStorage
-    const key = getStorageKey(councilType);
+    const key = getStorageKey(councilType, false);
     localStorage.removeItem(key);
     
-    // Uncheck all checkboxes on the page
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         checkbox.checked = false;
     });
     
-    // Show confirmation message
-    showNotification('تم إعادة تعيين جميع الاختيارات', 'success');
+    showNotification('تم إعادة تعيين جميع اختيارات قائمة المتحدثين', 'success');
 }
 
-// Checkbox management
 function initializeCheckboxes() {
-    debugLog('Initializing checkboxes');
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    debugLog(`Found ${checkboxes.length} checkboxes`);
+    const councilType = getCouncilTypeFromURL();
+    if (!councilType) return;
     
-    checkboxes.forEach((checkbox, index) => {
-        // Determine council type from page URL or checkbox ID
-        const councilType = determineCouncilType(checkbox);
+    checkboxes.forEach(checkbox => {
         const selected = getSelectedCountries(councilType);
-        
-        debugLog(`Checkbox ${index}:`, {
-            id: checkbox.id,
-            value: checkbox.value,
-            flag: checkbox.dataset.flag,
-            councilType: councilType
-        });
-        
-        // Check if this country is already selected
-        const isSelected = selected.some(country => country.value === checkbox.value);
+        const isSelected = selected.some(country => country.id === checkbox.id);
         checkbox.checked = isSelected;
         
-        // Add event listener
-        checkbox.addEventListener('change', function(event) {
-            debugLog('Checkbox changed:', {
-                checked: this.checked,
-                value: this.value,
-                councilType: councilType
-            });
-            handleCheckboxChange(this, councilType);
+        checkbox.addEventListener('change', function() {
+            const countryData = {
+                id: this.id,
+                name_ar: this.value,
+                flag: this.dataset.flag,
+            };
+            
+            if (this.checked) {
+                addCountryToSelection(councilType, countryData);
+                showNotification(`تم إضافة ${countryData.name_ar} إلى قائمة المتحدثين`, 'success');
+            } else {
+                removeCountryFromSelection(councilType, countryData.id);
+                showNotification(`تم إزالة ${countryData.name_ar} من قائمة المتحدثين`, 'info');
+            }
         });
     });
 }
 
-function determineCouncilType(checkbox) {
-    // First try to determine from checkbox ID prefix
-    if (checkbox.id.startsWith('hr_')) {
-        return 'human_rights';
-    } else if (checkbox.id.startsWith('sc_')) {
-        return 'security';
-    }
+function loadSpeakerList() {
+    const councilType = getCouncilTypeFromURL();
+    if (!councilType) return;
     
-    // Fallback: check current page URL
-    const currentPage = window.location.pathname.toLowerCase();
-    if (currentPage.includes('human_rights')) {
-        return 'human_rights';
-    } else if (currentPage.includes('security')) {
-        return 'security';
-    }
-    
-    debugLog('Could not determine council type, defaulting to human_rights');
-    return 'human_rights'; // Default fallback
-}
-
-function handleCheckboxChange(checkbox, councilType) {
-    const countryData = {
-        value: checkbox.value,
-        flag: checkbox.dataset.flag,
-        index: checkbox.dataset.index
-    };
-    
-    debugLog('Handling checkbox change:', {
-        checked: checkbox.checked,
-        countryData: countryData,
-        councilType: councilType
-    });
-    
-    if (checkbox.checked) {
-        addCountryToSelection(councilType, countryData);
-        showNotification(`تم إضافة ${countryData.value} إلى قائمة المتحدثين`, 'success');
-    } else {
-        removeCountryFromSelection(councilType, countryData.value);
-        showNotification(`تم إزالة ${countryData.value} من قائمة المتحدثين`, 'info');
-    }
-}
-
-// Speaker list functions
-function loadSpeakerList(councilType) {
-    debugLog('Loading speaker list for:', councilType);
     const selected = getSelectedCountries(councilType);
     const speakerListContainer = document.getElementById('speaker-list');
-    const noSpeakersDiv = document.getElementById('no-speakers');
-    const speakerCountElement = document.getElementById('speaker-count');
     
-    debugLog('Speaker list elements:', {
-        container: !!speakerListContainer,
-        noSpeakers: !!noSpeakersDiv,
-        counter: !!speakerCountElement,
-        selectedCount: selected.length
-    });
+    if (!speakerListContainer) return;
     
-    if (!speakerListContainer) {
-        debugLog('Speaker list container not found');
-        return;
+    const sortedCountries = selected.sort((a, b) => a.timestamp - b.timestamp);
+    
+    let speakerListHTML = '';
+    if (sortedCountries.length > 0) {
+        sortedCountries.forEach((country, index) => {
+            speakerListHTML += `
+                <div class="speaker-item">
+                    <div class="speaker-order">${index + 1}</div>
+                    <span class="flag-icon flag-icon-${country.flag}"></span>
+                    <div class="speaker-name">${country.name_ar}</div>
+                </div>
+            `;
+        });
+    } else {
+        speakerListHTML = `
+            <div class="no-speakers" id="no-speakers">
+                <p>لا يوجد متحدثون محددون حاليًا.</p>
+                <p>يرجى العودة إلى صفحة المجلس لتحديد الدول المتحدثة.</p>
+            </div>
+        `;
     }
     
-    // Update speaker count
+    speakerListContainer.innerHTML = speakerListHTML;
+    
+    const speakerCountElement = document.getElementById('speaker-count');
     if (speakerCountElement) {
         speakerCountElement.textContent = `عدد المتحدثين: ${selected.length}`;
     }
+}
+
+// --- Voting Functions (NEW) ---
+function generateVotingList(councilType) {
+    const countries = getCountryList(councilType);
+    const currentVotes = getCountryVotes(councilType);
+    const container = document.getElementById(`${councilType}_countries`);
+    if (!container) return;
+
+    let html = '';
+    countries.forEach(country => {
+        const currentVote = currentVotes[country.id] || '';
+        
+        html += `
+            <div class="country-vote-item" data-country-id="${country.id}">
+                <div class="country-name">
+                    <span class="flag-icon flag-icon-${country.flag}"></span>
+                    ${country.name_ar}
+                </div>
+                <div class="vote-options">
+                    <button class="vote-btn in-favour ${currentVote === VOTE_OPTIONS.IN_FAVOUR ? 'selected' : ''}" 
+                            data-vote-type="${VOTE_OPTIONS.IN_FAVOUR}" 
+                            onclick="recordVote('${councilType}', '${country.id}', '${VOTE_OPTIONS.IN_FAVOUR}', this)">
+                        <i class="fa-solid fa-plus"></i> مؤيد
+                    </button>
+                    <button class="vote-btn against ${currentVote === VOTE_OPTIONS.AGAINST ? 'selected' : ''}" 
+                            data-vote-type="${VOTE_OPTIONS.AGAINST}" 
+                            onclick="recordVote('${councilType}', '${country.id}', '${VOTE_OPTIONS.AGAINST}', this)">
+                        <i class="fa-solid fa-minus"></i> معارض
+                    </button>
+                    <button class="vote-btn abstention ${currentVote === VOTE_OPTIONS.ABSTENTION ? 'selected' : ''}" 
+                            data-vote-type="${VOTE_OPTIONS.ABSTENTION}" 
+                            onclick="recordVote('${councilType}', '${country.id}', '${VOTE_OPTIONS.ABSTENTION}', this)">
+                        <i class="fa-solid fa-xmark"></i> ممتنع
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+    // Show initial results on load
+    showVotingResult(councilType);
+}
+
+function recordVote(councilType, countryId, voteType, buttonElement) {
+    const currentVotes = getCountryVotes(councilType);
     
-    if (selected.length === 0) {
-        // Show no speakers message
-        if (noSpeakersDiv) {
-            noSpeakersDiv.style.display = 'block';
+    // Check if already selected, if so, unselect (toggle)
+    if (currentVotes[countryId] === voteType) {
+        delete currentVotes[countryId];
+        buttonElement.classList.remove('selected');
+    } else {
+        // Remove 'selected' from all buttons for this country
+        const voteOptions = buttonElement.closest('.vote-options').querySelectorAll('.vote-btn');
+        voteOptions.forEach(btn => btn.classList.remove('selected'));
+        
+        // Select the current button
+        buttonElement.classList.add('selected');
+        currentVotes[countryId] = voteType;
+    }
+    
+    saveCountryVotes(councilType, currentVotes);
+    showVotingResult(councilType);
+}
+
+function resetVoting(councilType) {
+    const key = getStorageKey(councilType, true);
+    localStorage.removeItem(key);
+    
+    // Clear all 'selected' classes
+    const buttons = document.querySelectorAll('.vote-btn');
+    buttons.forEach(btn => btn.classList.remove('selected'));
+    
+    showVotingResult(councilType);
+    showNotification('تم إعادة تعيين جميع الأصوات', 'success');
+}
+
+function showVotingResult(councilType) {
+    const countries = getCountryList(councilType);
+    const currentVotes = getCountryVotes(councilType);
+    const resultsContainer = document.getElementById(`${councilType}_results`);
+    const summaryContainer = document.getElementById(`${councilType}_summary`);
+    
+    if (!resultsContainer || !summaryContainer) return;
+
+    let resultsHTML = '';
+    const voteCounts = {
+        [VOTE_OPTIONS.IN_FAVOUR]: 0,
+        [VOTE_OPTIONS.AGAINST]: 0,
+        [VOTE_OPTIONS.ABSTENTION]: 0
+    };
+    
+    // Generate result list (plain text, no boxes, all on one page)
+    countries.forEach(country => {
+        const vote = currentVotes[country.id] || 'لم يصوت';
+        let iconMarkup = '';
+        
+        if (vote === VOTE_OPTIONS.IN_FAVOUR) {
+            iconMarkup = '<i class="fa-solid fa-plus"></i>';
+            voteCounts[VOTE_OPTIONS.IN_FAVOUR]++;
+        } else if (vote === VOTE_OPTIONS.AGAINST) {
+            iconMarkup = '<i class="fa-solid fa-minus"></i>';
+            voteCounts[VOTE_OPTIONS.AGAINST]++;
+        } else if (vote === VOTE_OPTIONS.ABSTENTION) {
+            iconMarkup = '<i class="fa-solid fa-xmark"></i>';
+            voteCounts[VOTE_OPTIONS.ABSTENTION]++;
         }
-        // Clear any existing speaker items
-        const existingSpeakers = speakerListContainer.querySelectorAll('.speaker-item');
-        existingSpeakers.forEach(item => item.remove());
-        debugLog('No speakers to display');
-        return;
-    }
-    
-    // Hide no speakers message
-    if (noSpeakersDiv) {
-        noSpeakersDiv.style.display = 'none';
-    }
-    
-    // Sort by selection order (timestamp)
-    const sortedCountries = selected.sort((a, b) => a.timestamp - b.timestamp);
-    debugLog('Sorted countries:', sortedCountries);
-    
-    // Generate speaker list HTML
-    let speakerListHTML = '';
-    sortedCountries.forEach((country, index) => {
-        speakerListHTML += `
-            <div class="speaker-item">
-                <div class="speaker-order">${index + 1}</div>
-                <span class="flag-icon flag-icon-${country.flag}"></span>
-                <div class="speaker-name">${country.value}</div>
+
+        resultsHTML += `
+            <div class="voting-result-item">
+                <div class="country-name-result">${country.name_ar}</div>
+                <div class="vote-status">${iconMarkup} ${vote}</div>
             </div>
         `;
     });
     
-    // Clear existing content and add new speakers
-    const existingSpeakers = speakerListContainer.querySelectorAll('.speaker-item');
-    existingSpeakers.forEach(item => item.remove());
-    
-    speakerListContainer.insertAdjacentHTML('beforeend', speakerListHTML);
-    debugLog('Speaker list updated with HTML');
+    resultsContainer.innerHTML = resultsHTML;
+
+    // Generate summary
+    summaryContainer.innerHTML = `
+        <div class="summary-item in-favour">
+            <i class="fa-solid fa-plus"></i>
+            <span>مؤيد: ${voteCounts[VOTE_OPTIONS.IN_FAVOUR]}</span>
+        </div>
+        <div class="summary-item against">
+            <i class="fa-solid fa-minus"></i>
+            <span>معارض: ${voteCounts[VOTE_OPTIONS.AGAINST]}</span>
+        </div>
+        <div class="summary-item abstention">
+            <i class="fa-solid fa-xmark"></i>
+            <span>ممتنع: ${voteCounts[VOTE_OPTIONS.ABSTENTION]}</span>
+        </div>
+    `;
 }
 
-// Event listeners setup
-function setupEventListeners() {
-    debugLog('Setting up event listeners');
+// --- Initialization and Event Handling ---
+document.addEventListener('DOMContentLoaded', function() {
+    const councilType = getCouncilTypeFromURL();
     
-    // Add smooth scrolling for better UX
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-    
-    // Add keyboard navigation support
-    document.addEventListener('keydown', function(e) {
-        // ESC key to go back
-        if (e.key === 'Escape') {
-            const currentPage = window.location.pathname;
-            if (currentPage.includes('speaker_list')) {
-                // Go back to respective council page
-                if (currentPage.includes('human_rights')) {
-                    goBackToCouncil('human_rights');
-                } else if (currentPage.includes('security')) {
-                    goBackToCouncil('security');
-                }
-            } else if (!currentPage.includes('index.html') && currentPage !== '/') {
-                // Go back to home page
-                goBack();
-            }
+    if (window.location.pathname.includes('council.html') && !window.location.pathname.includes('voting.html')) {
+        initializeCheckboxes();
+    } else if (window.location.pathname.includes('_voting.html')) {
+        // Only generate the list if the container is present
+        if (document.getElementById(`${councilType}_countries`)) {
+            generateVotingList(councilType);
         }
-    });
+    } else if (window.location.pathname.includes('speaker_list')) {
+        loadSpeakerList();
+    }
+    
+    setupEventListeners();
+});
+
+// --- Navigation functions (Modified) ---
+function goBack() {
+    window.history.back(); // Use history back for better flow
 }
 
-// Notification system
+function goToSpeakerList(councilType) {
+    if (councilType === 'human_rights') {
+        window.location.href = 'speaker_list_human_rights.html';
+    } else if (councilType === 'security') {
+        window.location.href = 'speaker_list_security_council.html';
+    }
+}
+
+// --- Event listeners setup (Simplified) ---
+function setupEventListeners() {
+    // No need for complex event listeners here, as navigation is now handled by direct links.
+}
+
+// --- Notification system (Unchanged) ---
 function showNotification(message, type = 'info') {
     // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
@@ -373,24 +488,11 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// Utility functions
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Export functions for global access (if needed)
-window.navigateToCouncil = navigateToCouncil;
-window.goToSpeakerList = goToSpeakerList;
+// Export functions for global access
 window.goBack = goBack;
-window.goBackToCouncil = goBackToCouncil;
+window.goToSpeakerList = goToSpeakerList;
 window.resetAllCheckboxes = resetAllCheckboxes;
 window.loadSpeakerList = loadSpeakerList;
-
+window.recordVote = recordVote;
+window.resetVoting = resetVoting;
+window.showVotingResult = showVotingResult;
