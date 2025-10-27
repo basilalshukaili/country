@@ -435,7 +435,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // --- Navigation functions (Modified) ---
 function goBack() {
-    window.history.back(); // Use history back for better flow
+    const councilType = getCouncilTypeFromURL();
+    if (councilType === 'human_rights') {
+        window.location.href = 'human_rights_options.html';
+    } else if (councilType === 'security') {
+        window.location.href = 'security_options.html';
+    } else {
+        window.history.back(); // Fallback for other pages
+    }
 }
 
 function goToSpeakerList(councilType) {
@@ -447,11 +454,7 @@ function goToSpeakerList(councilType) {
 }
 
 function goBackToCouncil(councilType) {
-    if (councilType === 'human_rights') {
-        window.location.href = 'human_rights_council.html';
-    } else if (councilType === 'security') {
-        window.location.href = 'security_council.html';
-    }
+    window.history.back();
 }
 
 // --- Event listeners setup (Simplified) ---
