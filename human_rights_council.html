@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مجلس حقوق الإنسان</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">\n    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,202 +19,199 @@
             <button class="control-btn primary" onclick="goToSpeakerList('human_rights')">قائمة المتحدثين</button>
             <button class="control-btn secondary" onclick="goBack()">العودة</button>
         </div>
-        
-        <main>
-            <div class="region-section">
-                <h2>الدول الأعضاء</h2>
-                <div class="countries-grid" id="human_rights">
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_benin" value="بنين" data-flag="🇧🇯" data-index="1">
-                        <label for="hr_benin"><span class="flag">🇧🇯</span> 1. بنين</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_congo_dr" value="الكونغو الديمقراطية" data-flag="🇨🇩" data-index="2">
-                        <label for="hr_congo_dr"><span class="flag">🇨🇩</span> 2. الكونغو الديمقراطية</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_ethiopia" value="إثيوبيا" data-flag="🇪🇹" data-index="3">
-                        <label for="hr_ethiopia"><span class="flag">🇪🇹</span> 3. إثيوبيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_gambia" value="غامبيا" data-flag="🇬🇲" data-index="4">
-                        <label for="hr_gambia"><span class="flag">🇬🇲</span> 4. غامبيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_kenya" value="كينيا" data-flag="🇰🇪" data-index="5">
-                        <label for="hr_kenya"><span class="flag">🇰🇪</span> 5. كينيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_algeria" value="الجزائر" data-flag="🇩🇿" data-index="6">
-                        <label for="hr_algeria"><span class="flag">🇩🇿</span> 6. الجزائر</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_burundi" value="بوروندي" data-flag="🇧🇮" data-index="7">
-                        <label for="hr_burundi"><span class="flag">🇧🇮</span> 7. بوروندي</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_cote_divoire" value="كوت ديفوار" data-flag="🇨🇮" data-index="8">
-                        <label for="hr_cote_divoire"><span class="flag">🇨🇮</span> 8. كوت ديفوار</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_ghana" value="غانا" data-flag="🇬🇭" data-index="9">
-                        <label for="hr_ghana"><span class="flag">🇬🇭</span> 9. غانا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_malawi" value="مالاوي" data-flag="🇲🇼" data-index="10">
-                        <label for="hr_malawi"><span class="flag">🇲🇼</span> 10. مالاوي</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_morocco" value="المغرب" data-flag="🇲🇦" data-index="11">
-                        <label for="hr_morocco"><span class="flag">🇲🇦</span> 11. المغرب</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_somalia" value="الصومال" data-flag="🇸🇴" data-index="12">
-                        <label for="hr_somalia"><span class="flag">🇸🇴</span> 12. الصومال</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_sudan" value="السودان" data-flag="🇸🇩" data-index="13">
-                        <label for="hr_sudan"><span class="flag">🇸🇩</span> 13. السودان</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_qatar" value="قطر" data-flag="🇶🇦" data-index="14">
-                        <label for="hr_qatar"><span class="flag">🇶🇦</span> 14. قطر</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_south_korea" value="كوريا الجنوبية" data-flag="🇰🇷" data-index="15">
-                        <label for="hr_south_korea"><span class="flag">🇰🇷</span> 15. كوريا الجنوبية</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_marshall_islands" value="جزر مارشال" data-flag="🇲🇭" data-index="16">
-                        <label for="hr_marshall_islands"><span class="flag">🇲🇭</span> 16. جزر مارشال</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_thailand" value="تايلاند" data-flag="🇹🇭" data-index="17">
-                        <label for="hr_thailand"><span class="flag">🇹🇭</span> 17. تايلاند</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_cyprus" value="قبرص" data-flag="🇨🇾" data-index="18">
-                        <label for="hr_cyprus"><span class="flag">🇨🇾</span> 18. قبرص</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_bangladesh" value="بنغلاديش" data-flag="🇧🇩" data-index="19">
-                        <label for="hr_bangladesh"><span class="flag">🇧🇩</span> 19. بنغلاديش</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_china" value="الصين" data-flag="🇨🇳" data-index="20">
-                        <label for="hr_china"><span class="flag">🇨🇳</span> 20. الصين</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_india" value="الهند" data-flag="🇮🇳" data-index="21">
-                        <label for="hr_india"><span class="flag">🇮🇳</span> 21. الهند</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_indonesia" value="إندونيسيا" data-flag="🇮🇩" data-index="22">
-                        <label for="hr_indonesia"><span class="flag">🇮🇩</span> 22. إندونيسيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_japan" value="اليابان" data-flag="🇯🇵" data-index="23">
-                        <label for="hr_japan"><span class="flag">🇯🇵</span> 23. اليابان</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_kazakhstan" value="كازاخستان" data-flag="🇰🇿" data-index="24">
-                        <label for="hr_kazakhstan"><span class="flag">🇰🇿</span> 24. كازاخستان</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_kuwait" value="الكويت" data-flag="🇰🇼" data-index="25">
-                        <label for="hr_kuwait"><span class="flag">🇰🇼</span> 25. الكويت</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_kyrgyzstan" value="قيرغيزستان" data-flag="🇰🇬" data-index="26">
-                        <label for="hr_kyrgyzstan"><span class="flag">🇰🇬</span> 26. قيرغيزستان</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_czech" value="التشيك" data-flag="🇨🇿" data-index="27">
-                        <label for="hr_czech"><span class="flag">🇨🇿</span> 27. التشيك</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_north_macedonia" value="مقدونيا الشمالية" data-flag="🇲🇰" data-index="28">
-                        <label for="hr_north_macedonia"><span class="flag">🇲🇰</span> 28. مقدونيا الشمالية</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_albania" value="ألبانيا" data-flag="🇦🇱" data-index="29">
-                        <label for="hr_albania"><span class="flag">🇦🇱</span> 29. ألبانيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_bulgaria" value="بلغاريا" data-flag="🇧🇬" data-index="30">
-                        <label for="hr_bulgaria"><span class="flag">🇧🇬</span> 30. بلغاريا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_georgia" value="جورجيا" data-flag="🇬🇪" data-index="31">
-                        <label for="hr_georgia"><span class="flag">🇬🇪</span> 31. جورجيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_romania" value="رومانيا" data-flag="🇷🇴" data-index="32">
-                        <label for="hr_romania"><span class="flag">🇷🇴</span> 32. رومانيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_bolivia" value="بوليفيا" data-flag="🇧🇴" data-index="33">
-                        <label for="hr_bolivia"><span class="flag">🇧🇴</span> 33. بوليفيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_colombia" value="كولومبيا" data-flag="🇨🇴" data-index="34">
-                        <label for="hr_colombia"><span class="flag">🇨🇴</span> 34. كولومبيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_mexico" value="المكسيك" data-flag="🇲🇽" data-index="35">
-                        <label for="hr_mexico"><span class="flag">🇲🇽</span> 35. المكسيك</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_argentina" value="الأرجنتين" data-flag="🇦🇷" data-index="36">
-                        <label for="hr_argentina"><span class="flag">🇦🇷</span> 36. الأرجنتين</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_brazil" value="البرازيل" data-flag="🇧🇷" data-index="37">
-                        <label for="hr_brazil"><span class="flag">🇧🇷</span> 37. البرازيل</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_chile" value="تشيلي" data-flag="🇨🇱" data-index="38">
-                        <label for="hr_chile"><span class="flag">🇨🇱</span> 38. تشيلي</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_costa_rica" value="كوستاريكا" data-flag="🇨🇷" data-index="39">
-                        <label for="hr_costa_rica"><span class="flag">🇨🇷</span> 39. كوستاريكا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_dominican_republic" value="جمهورية الدومينيكان" data-flag="🇩🇴" data-index="40">
-                        <label for="hr_dominican_republic"><span class="flag">🇩🇴</span> 40. جمهورية الدومينيكان</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_iceland" value="أيسلندا" data-flag="🇮🇸" data-index="41">
-                        <label for="hr_iceland"><span class="flag">🇮🇸</span> 41. أيسلندا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_spain" value="إسبانيا" data-flag="🇪🇸" data-index="42">
-                        <label for="hr_spain"><span class="flag">🇪🇸</span> 42. إسبانيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_switzerland" value="سويسرا" data-flag="🇨🇭" data-index="43">
-                        <label for="hr_switzerland"><span class="flag">🇨🇭</span> 43. سويسرا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_belgium" value="بلجيكا" data-flag="🇧🇪" data-index="44">
-                        <label for="hr_belgium"><span class="flag">🇧🇪</span> 44. بلجيكا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_germany" value="ألمانيا" data-flag="🇩🇪" data-index="45">
-                        <label for="hr_germany"><span class="flag">🇩🇪</span> 45. ألمانيا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_france" value="فرنسا" data-flag="🇫🇷" data-index="46">
-                        <label for="hr_france"><span class="flag">🇫🇷</span> 46. فرنسا</label>
-                    </div>
-                    <div class="country-item">
-                        <input type="checkbox" id="hr_netherlands" value="هولندا" data-flag="🇳🇱" data-index="47">
-                        <label for="hr_netherlands"><span class="flag">🇳🇱</span> 47. هولندا</label>
-                    </div>
-                </div>
-            </div>
-        </main>
+
+	        <main>
+	            <div class="countries-grid" id="human_rights">
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_albania" value="ألبانيا" data-flag="al" data-index="1">
+	                        <label for="hr_albania"><span class="flag-icon flag-icon-al"></span> 1. ألبانيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_germany" value="ألمانيا" data-flag="de" data-index="2">
+	                        <label for="hr_germany"><span class="flag-icon flag-icon-de"></span> 2. ألمانيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_argentina" value="الأرجنتين" data-flag="ar" data-index="3">
+	                        <label for="hr_argentina"><span class="flag-icon flag-icon-ar"></span> 3. الأرجنتين</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_spain" value="إسبانيا" data-flag="es" data-index="4">
+	                        <label for="hr_spain"><span class="flag-icon flag-icon-es"></span> 4. إسبانيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_indonesia" value="إندونيسيا" data-flag="id" data-index="5">
+	                        <label for="hr_indonesia"><span class="flag-icon flag-icon-id"></span> 5. إندونيسيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_iceland" value="أيسلندا" data-flag="is" data-index="6">
+	                        <label for="hr_iceland"><span class="flag-icon flag-icon-is"></span> 6. أيسلندا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_brazil" value="البرازيل" data-flag="br" data-index="7">
+	                        <label for="hr_brazil"><span class="flag-icon flag-icon-br"></span> 7. البرازيل</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_bulgaria" value="بلغاريا" data-flag="bg" data-index="8">
+	                        <label for="hr_bulgaria"><span class="flag-icon flag-icon-bg"></span> 8. بلغاريا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_belgium" value="بلجيكا" data-flag="be" data-index="9">
+	                        <label for="hr_belgium"><span class="flag-icon flag-icon-be"></span> 9. بلجيكا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_panama" value="بنما" data-flag="pa" data-index="10">
+	                        <label for="hr_panama"><span class="flag-icon flag-icon-pa"></span> 10. بنما</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_bangladesh" value="بنغلاديش" data-flag="bd" data-index="11">
+	                        <label for="hr_bangladesh"><span class="flag-icon flag-icon-bd"></span> 11. بنغلاديش</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_bolivia" value="بوليفيا" data-flag="bo" data-index="12">
+	                        <label for="hr_bolivia"><span class="flag-icon flag-icon-bo"></span> 12. بوليفيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_burundi" value="بوروندي" data-flag="bi" data-index="13">
+	                        <label for="hr_burundi"><span class="flag-icon flag-icon-bi"></span> 13. بوروندي</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_thailand" value="تايلاند" data-flag="th" data-index="14">
+	                        <label for="hr_thailand"><span class="flag-icon flag-icon-th"></span> 14. تايلاند</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_czech" value="التشيك" data-flag="cz" data-index="15">
+	                        <label for="hr_czech"><span class="flag-icon flag-icon-cz"></span> 15. التشيك</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_chile" value="تشيلي" data-flag="cl" data-index="16">
+	                        <label for="hr_chile"><span class="flag-icon flag-icon-cl"></span> 16. تشيلي</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_dominican_republic" value="جمهورية الدومينيكان" data-flag="do" data-index="17">
+	                        <label for="hr_dominican_republic"><span class="flag-icon flag-icon-do"></span> 17. جمهورية الدومينيكان</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_georgia" value="جورجيا" data-flag="ge" data-index="18">
+	                        <label for="hr_georgia"><span class="flag-icon flag-icon-ge"></span> 18. جورجيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_marshall_islands" value="جزر مارشال" data-flag="mh" data-index="19">
+	                        <label for="hr_marshall_islands"><span class="flag-icon flag-icon-mh"></span> 19. جزر مارشال</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_algeria" value="الجزائر" data-flag="dz" data-index="20">
+	                        <label for="hr_algeria"><span class="flag-icon flag-icon-dz"></span> 20. الجزائر</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_south_korea" value="كوريا الجنوبية" data-flag="kr" data-index="21">
+	                        <label for="hr_south_korea"><span class="flag-icon flag-icon-kr"></span> 21. كوريا الجنوبية</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_cote_divoire" value="كوت ديفوار" data-flag="ci" data-index="22">
+	                        <label for="hr_cote_divoire"><span class="flag-icon flag-icon-ci"></span> 22. كوت ديفوار</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_colombia" value="كولومبيا" data-flag="co" data-index="23">
+	                        <label for="hr_colombia"><span class="flag-icon flag-icon-co"></span> 23. كولومبيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_kuwait" value="الكويت" data-flag="kw" data-index="24">
+	                        <label for="hr_kuwait"><span class="flag-icon flag-icon-kw"></span> 24. الكويت</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_congo_dr" value="الكونغو الديمقراطية" data-flag="cd" data-index="25">
+	                        <label for="hr_congo_dr"><span class="flag-icon flag-icon-cd"></span> 25. الكونغو الديمقراطية</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_kenya" value="كينيا" data-flag="ke" data-index="26">
+	                        <label for="hr_kenya"><span class="flag-icon flag-icon-ke"></span> 26. كينيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_netherlands" value="هولندا" data-flag="nl" data-index="27">
+	                        <label for="hr_netherlands"><span class="flag-icon flag-icon-nl"></span> 27. هولندا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_india" value="الهند" data-flag="in" data-index="28">
+	                        <label for="hr_india"><span class="flag-icon flag-icon-in"></span> 28. الهند</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_japan" value="اليابان" data-flag="jp" data-index="29">
+	                        <label for="hr_japan"><span class="flag-icon flag-icon-jp"></span> 29. اليابان</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_greece" value="اليونان" data-flag="gr" data-index="30">
+	                        <label for="hr_greece"><span class="flag-icon flag-icon-gr"></span> 30. اليونان</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_mexico" value="المكسيك" data-flag="mx" data-index="31">
+	                        <label for="hr_mexico"><span class="flag-icon flag-icon-mx"></span> 31. المكسيك</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_malawi" value="مالاوي" data-flag="mw" data-index="32">
+	                        <label for="hr_malawi"><span class="flag-icon flag-icon-mw"></span> 32. مالاوي</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_morocco" value="المغرب" data-flag="ma" data-index="33">
+	                        <label for="hr_morocco"><span class="flag-icon flag-icon-ma"></span> 33. المغرب</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_north_macedonia" value="مقدونيا الشمالية" data-flag="mk" data-index="34">
+	                        <label for="hr_north_macedonia"><span class="flag-icon flag-icon-mk"></span> 34. مقدونيا الشمالية</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_austria" value="النمسا" data-flag="at" data-index="35">
+	                        <label for="hr_austria"><span class="flag-icon flag-icon-at"></span> 35. النمسا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_pakistan" value="باكستان" data-flag="pk" data-index="36">
+	                        <label for="hr_pakistan"><span class="flag-icon flag-icon-pk"></span> 36. باكستان</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_portugal" value="البرتغال" data-flag="pt" data-index="37">
+	                        <label for="hr_portugal"><span class="flag-icon flag-icon-pt"></span> 37. البرتغال</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_qatar" value="قطر" data-flag="qa" data-index="38">
+	                        <label for="hr_qatar"><span class="flag-icon flag-icon-qa"></span> 38. قطر</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_romania" value="رومانيا" data-flag="ro" data-index="39">
+	                        <label for="hr_romania"><span class="flag-icon flag-icon-ro"></span> 39. رومانيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_switzerland" value="سويسرا" data-flag="ch" data-index="40">
+	                        <label for="hr_switzerland"><span class="flag-icon flag-icon-ch"></span> 40. سويسرا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_china" value="الصين" data-flag="cn" data-index="41">
+	                        <label for="hr_china"><span class="flag-icon flag-icon-cn"></span> 41. الصين</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_gambia" value="غامبيا" data-flag="gm" data-index="42">
+	                        <label for="hr_gambia"><span class="flag-icon flag-icon-gm"></span> 42. غامبيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_france" value="فرنسا" data-flag="fr" data-index="43">
+	                        <label for="hr_france"><span class="flag-icon flag-icon-fr"></span> 43. فرنسا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_cyprus" value="قبرص" data-flag="cy" data-index="44">
+	                        <label for="hr_cyprus"><span class="flag-icon flag-icon-cy"></span> 44. قبرص</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_kyrgyzstan" value="قيرغيزستان" data-flag="kg" data-index="45">
+	                        <label for="hr_kyrgyzstan"><span class="flag-icon flag-icon-kg"></span> 45. قيرغيزستان</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_kazakhstan" value="كازاخستان" data-flag="kz" data-index="46">
+	                        <label for="hr_kazakhstan"><span class="flag-icon flag-icon-kz"></span> 46. كازاخستان</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="hr_costa_rica" value="كوستاريكا" data-flag="cr" data-index="47">
+	                        <label for="hr_costa_rica"><span class="flag-icon flag-icon-cr"></span> 47. كوستاريكا</label>
+	                    </div>
+	            </div>
+	        </main>
     </div>
     
     <script src="script.js"></script>
