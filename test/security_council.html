@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجلس الأمن</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">\n    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>مجلس الأمن</h1>
+            <p>(15 دولة)</p>
+        </header>
+        
+        <div class="controls">
+            <button class="control-btn" onclick="resetAllCheckboxes('security')">إعادة تعيين جميع الاختيارات</button>
+            <button class="control-btn primary" onclick="goToSpeakerList('security')">قائمة المتحدثين</button>
+            <button class="control-btn secondary" onclick="goBack()">العودة</button>
+        </div>
+
+	        <main>
+	            <div class="countries-grid" id="security">
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_algeria" value="الجزائر" data-flag="dz" data-index="1">
+	                        <label for="sc_algeria"><span class="flag-icon flag-icon-dz"></span> 1. الجزائر</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_denmark" value="الدنمارك" data-flag="dk" data-index="2">
+	                        <label for="sc_denmark"><span class="flag-icon flag-icon-dk"></span> 2. الدنمارك</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_russia" value="روسيا" data-flag="ru" data-index="3">
+	                        <label for="sc_russia"><span class="flag-icon flag-icon-ru"></span> 3. روسيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_slovenia" value="سلوفينيا" data-flag="si" data-index="4">
+	                        <label for="sc_slovenia"><span class="flag-icon flag-icon-si"></span> 4. سلوفينيا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_sierra_leone" value="سيراليون" data-flag="sl" data-index="5">
+	                        <label for="sc_sierra_leone"><span class="flag-icon flag-icon-sl"></span> 5. سيراليون</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_china" value="الصين" data-flag="cn" data-index="6">
+	                        <label for="sc_china"><span class="flag-icon flag-icon-cn"></span> 6. الصين</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_somalia" value="الصومال" data-flag="so" data-index="7">
+	                        <label for="sc_somalia"><span class="flag-icon flag-icon-so"></span> 7. الصومال</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_france" value="فرنسا" data-flag="fr" data-index="8">
+	                        <label for="sc_france"><span class="flag-icon flag-icon-fr"></span> 8. فرنسا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_guyana" value="غيانا" data-flag="gy" data-index="9">
+	                        <label for="sc_guyana"><span class="flag-icon flag-icon-gy"></span> 9. غيانا</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_qatar" value="قطر" data-flag="qa" data-index="10">
+	                        <label for="sc_qatar"><span class="flag-icon flag-icon-qa"></span> 10. قطر</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_south_korea" value="كوريا الجنوبية" data-flag="kr" data-index="11">
+	                        <label for="sc_south_korea"><span class="flag-icon flag-icon-kr"></span> 11. كوريا الجنوبية</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_uk" value="المملكة المتحدة" data-flag="gb" data-index="12">
+	                        <label for="sc_uk"><span class="flag-icon flag-icon-gb"></span> 12. المملكة المتحدة</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_usa" value="الولايات المتحدة" data-flag="us" data-index="13">
+	                        <label for="sc_usa"><span class="flag-icon flag-icon-us"></span> 13. الولايات المتحدة</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_greece" value="اليونان" data-flag="gr" data-index="14">
+	                        <label for="sc_greece"><span class="flag-icon flag-icon-gr"></span> 14. اليونان</label>
+	                    </div>
+	                    <div class="country-item">
+	                        <input type="checkbox" id="sc_pakistan" value="باكستان" data-flag="pk" data-index="15">
+	                        <label for="sc_pakistan"><span class="flag-icon flag-icon-pk"></span> 15. باكستان</label>
+	                    </div>
+	            </div>
+	        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

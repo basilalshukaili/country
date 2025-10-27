@@ -1,0 +1,430 @@
+
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #000;
+    color: #e0e0e0;
+    min-height: 100vh;
+    line-height: 1.6;
+    direction: rtl;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    opacity: 0.9;
+}
+
+/* Controls section */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.control-btn.primary:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.control-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.control-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.control-btn:not(.primary):not(.secondary) {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+.control-btn:not(.primary):not(.secondary):hover {
+    background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+}
+
+/* Home page council buttons */
+.council-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.council-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px 30px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(15px);
+    min-width: 280px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.council-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.btn-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.btn-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* Region sections */
+.region-section {
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.region-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Countries grid */
+.countries-grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 80vh;
+    gap: 15px;
+    margin-top: 20px;
+    direction: rtl;
+}
+
+.country-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 280px;
+}
+
+.country-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.country-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-left: 12px;
+    cursor: pointer;
+    accent-color: #667eea;
+    transform: scale(1.2);
+}
+
+.country-item label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #e0e0e0;
+    transition: color 0.3s ease;
+}
+
+.country-item:hover label {
+    color: #ffffff;
+}
+
+.flag, .speaker-flag {
+    /* These styles are mostly overridden by flag-icon-css, but ensure proper spacing */
+    display: inline-block;
+    margin-left: 12px;
+    margin-right: 8px;
+    vertical-align: middle;
+    /* The flag-icon-css library handles the size and appearance */
+}
+
+/* Speaker list styles */
+.speaker-list {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 400px;
+}
+
+.speaker-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.speaker-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(-5px);
+}
+
+.speaker-order {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-left: 20px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.speaker-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.no-speakers {
+    text-align: center;
+    padding: 60px 20px;
+    color: #b0b0b0;
+}
+
+.no-speakers p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.no-speakers p:first-child {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #d0d0d0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    .council-buttons {
+        gap: 20px;
+    }
+    
+    .council-btn {
+        min-width: 250px;
+        padding: 30px 20px;
+    }
+    
+    .btn-icon {
+        font-size: 2.5rem;
+    }
+    
+    .btn-text {
+        font-size: 1.1rem;
+    }
+    
+    .countries-grid {
+        flex-direction: row;
+        max-height: none;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .control-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .speaker-item {
+        padding: 15px;
+    }
+    
+    .speaker-name {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 20px 0;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .council-btn {
+        min-width: 200px;
+        padding: 25px 15px;
+    }
+    
+    .region-section {
+        padding: 20px 15px;
+    }
+    
+    .region-section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .country-item {
+        padding: 12px;
+    }
+    
+    .country-item label {
+        font-size: 1rem;
+    }
+    
+    .speaker-list {
+        padding: 20px;
+    }
+    
+    .speaker-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .speaker-order {
+        margin: 0;
+    }
+}
+
+/* Animation for page transitions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Checkbox animation */
+.country-item input[type="checkbox"]:checked + label {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.country-item input[type="checkbox"]:checked + label .flag {
+    transform: scale(1.2);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+/* Loading animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+

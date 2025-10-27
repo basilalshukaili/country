@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة المتحدثين - مجلس حقوق الإنسان</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">\n    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>قائمة المتحدثين - مجلس حقوق الإنسان</h1>
+            <p id="speaker-count">عدد المتحدثين: 0</p>
+        </header>
+        
+        <div class="controls">
+            <button class="control-btn secondary" onclick="goBackToCouncil('human_rights')">العودة إلى مجلس حقوق الإنسان</button>
+        </div>
+        
+        <main>
+            <div id="speaker-list" class="speaker-list">
+                <div class="no-speakers" id="no-speakers">
+                    <p>لم يتم اختيار أي متحدثين بعد</p>
+                    <p>يرجى العودة إلى صفحة المجلس لاختيار الدول</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Load and display selected countries for human rights council
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSpeakerList('human_rights');
+        });
+    </script>
+</body>
+</html>
+
