@@ -227,7 +227,7 @@ function loadSpeakerList() {
             speakerListHTML += `
                 <div class="speaker-item">
                     <div class="speaker-order">${index + 1}</div>
-                    <span class="flag-icon flag-icon-${country.flag}"></span>
+                    <span class="fi fi-${country.flag}"></span>
                     <div class="speaker-name">${country.name_ar}</div>
                 </div>
             `;
@@ -267,7 +267,7 @@ function generateVotingList(councilType) {
         html += `
             <div class="country-vote-item" data-country-id="${country.id}">
                 <div class="country-name">
-                    <span class="flag-icon flag-icon-${country.flag}"></span>
+                    <span class="fi fi-${country.flag}"></span>
                     ${country.name_ar}
                 </div>
                 <div class="vote-options">
