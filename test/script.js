@@ -266,10 +266,10 @@ function generateVotingList(councilType) {
         
         html += `
             <div class="country-vote-item" data-country-id="${country.id}">
-                <div class="country-name">
-                    <span class="fi fi-${country.flag}"></span>
-                    ${country.name_ar}
-                </div>
+<div class="country-name">
+	                    <span class="fi fi-${country.flag}"></span>
+	                    ${country.name_ar}
+	                </div>
                 <div class="vote-options">
                     <button class="vote-btn in-favour ${isSelectedInFavour}" 
                             data-vote-type="${VOTE_OPTIONS.IN_FAVOUR}" 
@@ -378,7 +378,7 @@ function displayVotingResults(councilType) {
 
         resultsHTML += `
             <div class="result-grid-item ${voteClass}">
-                <div class="result-country-name">${country.name_ar}</div>
+                <div class="result-country-name"><span class="fi fi-${country.flag}"></span> ${country.name_ar}</div>
                 <div class="result-vote-status">${voteIcon}</div>
             </div>
         `;
