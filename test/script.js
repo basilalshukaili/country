@@ -53,7 +53,7 @@ const HR_COUNTRIES = [
     { id: 'hr_india', name_ar: 'الهند', flag: 'in' },
     { id: 'hr_netherlands', name_ar: 'هولندا', flag: 'nl' },
     { id: 'hr_japan', name_ar: 'اليابان', flag: 'jp' },
-    { id: 'hr_ipcc', name_ar: 'الهيئة الحكومية الدولية المعنية بتغير المناخ', flag: 'un' }
+    { id: 'hr_ipcc', name_ar: 'الهيئة الحكومية الدولية المعنية بتغير المناخ', flag: 'un' },
 ];
 
 const SC_COUNTRIES = [
@@ -71,7 +71,7 @@ const SC_COUNTRIES = [
     { id: 'sc_south_korea', name_ar: 'كوريا الجنوبية', flag: 'kr' },
     { id: 'sc_uk', name_ar: 'المملكة المتحدة', flag: 'gb' },
     { id: 'sc_usa', name_ar: 'الولايات المتحدة الأمريكية', flag: 'us' },
-    { id: 'sc_greece', name_ar: 'اليونان', flag: 'gr' }
+    { id: 'sc_greece', name_ar: 'اليونان', flag: 'gr' },
 ];
 
 // --- Utility Functions ---
@@ -227,7 +227,7 @@ function loadSpeakerList() {
             speakerListHTML += `
                 <div class="speaker-item">
                     <div class="speaker-order">${index + 1}</div>
-                    <span class="fi fi-${country.flag}"></span>
+                    <span class="flag-icon flag-icon-${country.flag}"></span>
                     <div class="speaker-name">${country.name_ar}</div>
                 </div>
             `;
@@ -266,10 +266,10 @@ function generateVotingList(councilType) {
         
         html += `
             <div class="country-vote-item" data-country-id="${country.id}">
-<div class="country-name">
-	                    <span class="fi fi-${country.flag}"></span>
-	                    ${country.name_ar}
-	                </div>
+                <div class="country-name">
+                    <span class="flag-icon flag-icon-${country.flag}"></span>
+                    ${country.name_ar}
+                </div>
                 <div class="vote-options">
                     <button class="vote-btn in-favour ${isSelectedInFavour}" 
                             data-vote-type="${VOTE_OPTIONS.IN_FAVOUR}" 
@@ -378,7 +378,7 @@ function displayVotingResults(councilType) {
 
         resultsHTML += `
             <div class="result-grid-item ${voteClass}">
-                <div class="result-country-name"><span class="fi fi-${country.flag}"></span> ${country.name_ar}</div>
+                <div class="result-country-name">${country.name_ar}</div>
                 <div class="result-vote-status">${voteIcon}</div>
             </div>
         `;
