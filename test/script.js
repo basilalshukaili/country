@@ -378,7 +378,10 @@ function displayVotingResults(councilType) {
 
         resultsHTML += `
             <div class="result-grid-item ${voteClass}">
-                <div class="result-country-name">${country.name_ar}</div>
+                <div class="result-country-name">
+                    <span class="flag-icon flag-icon-${country.flag}"></span>
+                    ${country.name_ar}
+                </div>
                 <div class="result-vote-status">${voteIcon}</div>
             </div>
         `;

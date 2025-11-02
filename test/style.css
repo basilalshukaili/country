@@ -663,6 +663,16 @@ header p {
 .result-country-name {
     flex-grow: 1;
     text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row-reverse;
+}
+
+.result-country-name .flag-icon {
+    font-size: 1.3em;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .result-vote-status {
