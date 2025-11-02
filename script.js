@@ -14,71 +14,64 @@ const VOTE_OPTIONS = {
 
 // --- Country Data (Extracted and Re-formatted for Voting) ---
 const HR_COUNTRIES = [
+    { id: 'hr_ethiopia', name_ar: 'إثيوبيا', flag: 'et' },
     { id: 'hr_albania', name_ar: 'ألبانيا', flag: 'al' },
-    { id: 'hr_germany', name_ar: 'ألمانيا', flag: 'de' },
     { id: 'hr_argentina', name_ar: 'الأرجنتين', flag: 'ar' },
     { id: 'hr_spain', name_ar: 'إسبانيا', flag: 'es' },
+    { id: 'hr_germany', name_ar: 'ألمانيا', flag: 'de' },
     { id: 'hr_indonesia', name_ar: 'إندونيسيا', flag: 'id' },
     { id: 'hr_iceland', name_ar: 'أيسلندا', flag: 'is' },
     { id: 'hr_brazil', name_ar: 'البرازيل', flag: 'br' },
-    { id: 'hr_bulgaria', name_ar: 'بلغاريا', flag: 'bg' },
     { id: 'hr_belgium', name_ar: 'بلجيكا', flag: 'be' },
-    { id: 'hr_panama', name_ar: 'بنما', flag: 'pa' },
+    { id: 'hr_bulgaria', name_ar: 'بلغاريا', flag: 'bg' },
     { id: 'hr_bangladesh', name_ar: 'بنغلاديش', flag: 'bd' },
     { id: 'hr_bolivia', name_ar: 'بوليفيا', flag: 'bo' },
-    { id: 'hr_burundi', name_ar: 'بوروندي', flag: 'bi' },
     { id: 'hr_thailand', name_ar: 'تايلاند', flag: 'th' },
     { id: 'hr_czech', name_ar: 'التشيك', flag: 'cz' },
     { id: 'hr_chile', name_ar: 'تشيلي', flag: 'cl' },
-    { id: 'hr_dominican_republic', name_ar: 'جمهورية الدومينيكان', flag: 'do' },
     { id: 'hr_georgia', name_ar: 'جورجيا', flag: 'ge' },
-    { id: 'hr_marshall_islands', name_ar: 'جزر مارشال', flag: 'mh' },
-    { id: 'hr_algeria', name_ar: 'الجزائر', flag: 'dz' },
-    { id: 'hr_south_korea', name_ar: 'كوريا الجنوبية', flag: 'kr' },
-    { id: 'hr_cote_divoire', name_ar: 'كوت ديفوار', flag: 'ci' },
-    { id: 'hr_colombia', name_ar: 'كولومبيا', flag: 'co' },
-    { id: 'hr_kuwait', name_ar: 'الكويت', flag: 'kw' },
-    { id: 'hr_congo_dr', name_ar: 'الكونغو الديمقراطية', flag: 'cd' },
-    { id: 'hr_kenya', name_ar: 'كينيا', flag: 'ke' },
-    { id: 'hr_netherlands', name_ar: 'هولندا', flag: 'nl' },
-    { id: 'hr_india', name_ar: 'الهند', flag: 'in' },
-    { id: 'hr_japan', name_ar: 'اليابان', flag: 'jp' },
-    { id: 'hr_greece', name_ar: 'اليونان', flag: 'gr' },
-    { id: 'hr_mexico', name_ar: 'المكسيك', flag: 'mx' },
-    { id: 'hr_malawi', name_ar: 'مالاوي', flag: 'mw' },
-    { id: 'hr_morocco', name_ar: 'المغرب', flag: 'ma' },
-    { id: 'hr_north_macedonia', name_ar: 'مقدونيا الشمالية', flag: 'mk' },
-    { id: 'hr_austria', name_ar: 'النمسا', flag: 'at' },
-    { id: 'hr_pakistan', name_ar: 'باكستان', flag: 'pk' },
-    { id: 'hr_portugal', name_ar: 'البرتغال', flag: 'pt' },
-    { id: 'hr_qatar', name_ar: 'قطر', flag: 'qa' },
     { id: 'hr_romania', name_ar: 'رومانيا', flag: 'ro' },
+    { id: 'hr_sudan', name_ar: 'السودان', flag: 'sd' },
     { id: 'hr_switzerland', name_ar: 'سويسرا', flag: 'ch' },
+    { id: 'hr_somalia', name_ar: 'الصومال', flag: 'so' },
     { id: 'hr_china', name_ar: 'الصين', flag: 'cn' },
-    { id: 'hr_gambia', name_ar: 'غامبيا', flag: 'gm' },
+    { id: 'hr_ghana', name_ar: 'غانا', flag: 'gh' },
     { id: 'hr_france', name_ar: 'فرنسا', flag: 'fr' },
     { id: 'hr_cyprus', name_ar: 'قبرص', flag: 'cy' },
     { id: 'hr_kyrgyzstan', name_ar: 'قيرغيزستان', flag: 'kg' },
     { id: 'hr_kazakhstan', name_ar: 'كازاخستان', flag: 'kz' },
-    { id: 'hr_costa_rica', name_ar: 'كوستاريكا', flag: 'cr' }
+    { id: 'hr_cuba', name_ar: 'كوبا', flag: 'cu' },
+    { id: 'hr_cote_divoire', name_ar: 'كوت ديفوار', flag: 'ci' },
+    { id: 'hr_south_korea', name_ar: 'كوريا الجنوبية', flag: 'kr' },
+    { id: 'hr_colombia', name_ar: 'كولومبيا', flag: 'co' },
+    { id: 'hr_kuwait', name_ar: 'الكويت', flag: 'kw' },
+    { id: 'hr_costa_rica', name_ar: 'كوستاريكا', flag: 'cr' },
+    { id: 'hr_kenya', name_ar: 'كينيا', flag: 'ke' },
+    { id: 'hr_vietnam', name_ar: 'فيتنام', flag: 'vn' },
+    { id: 'hr_morocco', name_ar: 'المغرب', flag: 'ma' },
+    { id: 'hr_mexico', name_ar: 'المكسيك', flag: 'mx' },
+    { id: 'hr_india', name_ar: 'الهند', flag: 'in' },
+    { id: 'hr_netherlands', name_ar: 'هولندا', flag: 'nl' },
+    { id: 'hr_japan', name_ar: 'اليابان', flag: 'jp' },
+    { id: 'hr_ipcc', name_ar: 'الهيئة الحكومية الدولية المعنية بتغير المناخ', flag: 'un' },
 ];
 
 const SC_COUNTRIES = [
+    { id: 'sc_pakistan', name_ar: 'باكستان', flag: 'pk' },
+    { id: 'sc_panama', name_ar: 'بنما', flag: 'pa' },
     { id: 'sc_algeria', name_ar: 'الجزائر', flag: 'dz' },
     { id: 'sc_denmark', name_ar: 'الدنمارك', flag: 'dk' },
     { id: 'sc_russia', name_ar: 'روسيا', flag: 'ru' },
     { id: 'sc_slovenia', name_ar: 'سلوفينيا', flag: 'si' },
     { id: 'sc_sierra_leone', name_ar: 'سيراليون', flag: 'sl' },
-    { id: 'sc_china', name_ar: 'الصين', flag: 'cn' },
     { id: 'sc_somalia', name_ar: 'الصومال', flag: 'so' },
+    { id: 'sc_china', name_ar: 'الصين', flag: 'cn' },
+    { id: 'sc_guyana', name_ar: 'غيانا التعاونية', flag: 'gy' },
     { id: 'sc_france', name_ar: 'فرنسا', flag: 'fr' },
-    { id: 'sc_guyana', name_ar: 'غيانا', flag: 'gy' },
-    { id: 'sc_qatar', name_ar: 'قطر', flag: 'qa' },
     { id: 'sc_south_korea', name_ar: 'كوريا الجنوبية', flag: 'kr' },
     { id: 'sc_uk', name_ar: 'المملكة المتحدة', flag: 'gb' },
-    { id: 'sc_usa', name_ar: 'الولايات المتحدة', flag: 'us' },
+    { id: 'sc_usa', name_ar: 'الولايات المتحدة الأمريكية', flag: 'us' },
     { id: 'sc_greece', name_ar: 'اليونان', flag: 'gr' },
-    { id: 'sc_pakistan', name_ar: 'باكستان', flag: 'pk' }
 ];
 
 // --- Utility Functions ---
@@ -385,7 +378,10 @@ function displayVotingResults(councilType) {
 
         resultsHTML += `
             <div class="result-grid-item ${voteClass}">
-                <div class="result-country-name">${country.name_ar}</div>
+                <div class="result-country-name">
+                    <span class="flag-icon flag-icon-${country.flag}"></span>
+                    ${country.name_ar}
+                </div>
                 <div class="result-vote-status">${voteIcon}</div>
             </div>
         `;
